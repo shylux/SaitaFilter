@@ -6,7 +6,6 @@
 var popup_template = `
 <div id="saita_popup">
   <p><div id="selector"></div></p>
-  <input id="range" type="range" min="1" max="10">
 </div>
 <style>
 #saita_popup {
@@ -31,9 +30,6 @@ var popup_template = `
 #saita_popup #selector span.selected {
   color: black;
   border-color: gray;
-}
-#saita_popup #range {
-  width: 100%;
 }
 .saita_highlight {
   background-color: aqua;
@@ -66,24 +62,20 @@ var handler = $('*').click(function(event) {
   console.log(best_selector);
   $('body').append(popup_template);
   $('#saita_popup #selector').html('<span>'+selector_tree.join('</span><span>')+'</span>');
-  $('#saita_popup #range').attr({
-    'max': selector_tree.length-1,
-    'value': best_selector_index
-  });
   handler.off()
 
-  $('#saita_popup #range').get(0).oninput = function() {
+  $('#saita_popup #selector span').on('click', function() {
     $('.saita_highlight').removeClass('saita_highlight');
-    var selector = buildSelector($(this).val());
+    var selector = buildSelector($(this).index());
     $(selector).addClass('saita_highlight');
-    showSelection($(this).val());
-  };
-  $('#saita_popup #range').get(0).oninput()
+    showSelection($(this).index());
+  });
+  $('#saita_popup #selector span').get(best_selector_index).click();
 });
 
 function showSelection(index) {
   $('#saita_popup #selector span.selected').removeClass('selected');
-  $('#saita_popup #selector span').slice(0, index).addClass('selected');
+  $('#saita_popup #selector span').slice(0, index+1).addClass('selected');
 }
 
 function getSelector(el) {
