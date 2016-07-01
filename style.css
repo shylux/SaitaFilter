@@ -1,0 +1,61 @@
+#saita_popup {
+  position: fixed;
+  top: 10%;
+  left: 5%;
+  right: 5%;
+  z-index: 147483647;
+  background-color: white;
+  border: 2px solid grey;
+  border-radius: 5px;
+  padding: 1em;
+  text-align: left;
+  font-size: 12pt;
+}
+
+/* ADD RULE */
+#saita_popup #step2 {
+  display: none;
+}
+#saita_popup #step2 #selector {
+  overflow: auto;
+}
+#saita_popup #selector span {
+  cursor: pointer;
+  float: left;
+  margin: 2px;
+  color: lightgray;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+#saita_popup #selector span.selected {
+  color: black;
+  border-color: gray;
+}
+.saita_highlight {
+  background-color: aqua;
+  border: 1px dotted blue;
+}
+
+/* EDIT RULE */
+#saita_popup .rule {
+  overflow: auto;
+}
+#saita_popup .rule * {
+  float: left;
+}
+#saita_popup .rule > label,
+#saita_popup .rule > div {
+  clear: left;
+}
+#saita_popup .rule label {
+  min-width: 110px;
+  margin: 4px;
+}
+#saita_popup .rule input,
+#saita_popup .rule select {
+  width: 200px;
+}
+#saita_popup .rule .delete {
+  float: right;
+  cursor: pointer;
+}

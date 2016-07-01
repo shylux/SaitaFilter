@@ -7,12 +7,10 @@
 
   "permissions": [
     "<all_urls>",
-    "activeTab"
+    "storage",
+    "tabs",
+    "contextMenus"
   ],
-
-  "browser_action": {
-    "name": "Click here"
-  },
 
   "background": {
     "scripts": ["background.js"]
@@ -21,7 +19,8 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["jquery.js"]
+      "js": ["jquery.js", "rule_edit.js", "rule_execute.js"],
+      "css": ["style.css"]
     }
   ]
 

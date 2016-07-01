@@ -1,8 +1,23 @@
-chrome.browserAction.onClicked.addListener(function (tab) { //Fired when User Clicks ICON
-        chrome.tabs.executeScript(tab.id, {
-            "file": "add_rule.js"
-        }, function () { // Execute your code
-            console.log("Script Executed .. "); // Notification on Completion
-        });
-    //}
+
+chrome.contextMenus.create({
+  'title': 'Create a filter on this page',
+  'contexts': ['page', 'frame', 'selection', 'link', 'image'],
+  'onclick': function(menu, tab) {
+    chrome.tabs.executeScript(
+      tab.id,
+      {'file': 'rule_add.js'}
+    );
+  }
+});
+
+
+chrome.contextMenus.create({
+  'title': 'Edit the filter on this page',
+  'contexts': ['page', 'frame', 'selection', 'link', 'image'],
+  'onclick': function(menu, tab) {
+    chrome.tabs.executeScript(
+      tab.id,
+      {'code': 'saita_edit_rules();'}
+    );
+  }
 });
